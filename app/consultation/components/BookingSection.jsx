@@ -2,6 +2,7 @@
 // components/BookingSection.jsx
 'use client';
 import React, { useRef } from 'react';
+import { useRouter } from "next/navigation";
 import { motion } from 'framer-motion';
 import { slideInFromLeft, slideInFromRight } from '../../../constants/animations';
 import Button from '../../../components/Button';
@@ -13,8 +14,10 @@ import Pricing from './Pricing';
 export default function BookingSection() {
   const bookingRef = useRef(null);
 
+  const router = useRouter();
+
   const requestInfo = () => {
-    window.location.href = '/contact';
+    router.push("/contact");
   };
 
   const scrollToBooking = () => {
