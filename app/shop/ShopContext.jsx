@@ -1,11 +1,8 @@
 "use client"
 
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import {
-  bouncex,
-  continuousTextAnimation,
-  slideInFromRight,
   staggerContainer,
 } from "../../constants/animations";
 import Shopcards from "../../components/Ecommerce/Shopcards";

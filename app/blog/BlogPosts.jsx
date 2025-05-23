@@ -58,7 +58,7 @@ const BlogPosts = () => {
   };
 
   if (loading) return <Preloader />;
-  if (error) return <p>Error: {error}</p>;
+  if (error) return <p className="mt-10 font-satoshi">Oops, seems the server is not responding at the moment. Kindly check back again!</p>;
 
   return (
     <div className="py-10">

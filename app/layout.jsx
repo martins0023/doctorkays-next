@@ -18,7 +18,7 @@ export const metadata = {
     siteName: "Doctor Kays",
     images: [
       {
-        url: "https://doctorkays.com/og-image.jpg",
+        url: "https://doctorkays.com/favicon.ico",
         width: 1200,
         height: 630,
         alt: "Doctor Kays Logo",
@@ -34,7 +34,7 @@ export const metadata = {
   },
   // Google site verification
   verification: {
-    google: "YOUR_GOOGLE_SITE_VERIFICATION_CODE",
+    google: "vYz7BUZ5RQhAmh5Stoqwodo21tip1pKKaUtXZyMunFc",
   },
 };
 

@@ -22,8 +22,8 @@ export default function Trustpilot() {
   return (
     <div
       ref={widgetRef}
-      class="trustpilot-widget"
-      className="mb-10 -y-10"
+      // className="trustpilot-widget"
+      className="mb-10 -y-10 trustpilot-widget"
       data-locale="en-US"
       data-template-id="56278e9abfbbba0bdcd568bc"
       data-businessunit-id="681a8faa43a58c4ab5221cee"

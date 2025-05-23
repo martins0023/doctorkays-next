@@ -20,14 +20,7 @@ export async function middleware(request) {
 
 export const config = {
   matcher: [
-    "/about",
     "/blog/:path",
-    "/community/:path",
-    "/consultation",
-    "/contact",
-    "/faqs",
-    "/nearestpharmacy",
     "/shop/:path",
-    "/policy",
   ],
 };
