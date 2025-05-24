@@ -14,6 +14,7 @@ export async function middleware(request) {
   //   NextRequest.user = access_token;
   //   NextResponse.next()
   // }
+  return NextResponse.next();
 }
 
 // Middleware configuration to exclude static assets and specified paths
@@ -21,8 +22,7 @@ export async function middleware(request) {
 export const config = {
   matcher: [
     "/about",
-    "/blog/:path",
-    '/blog/:id',
-    "/shop/:path",
+    "/blog/:path*",
+    "/shop/:path*",
   ],
 };
