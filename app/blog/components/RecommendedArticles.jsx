@@ -23,7 +23,7 @@ const RecommendedArticles = ({ recommendedArticles, category, slug, truncateText
             key={article._id}
             onClick={() => {
               window.scrollTo({ top: 0, left: 0 });
-              router(`/blog/${article.slug.current}`, { state: article });
+              router.push(`/blog/${article.slug.current}`, { state: article });
             }}
             className="min-w-[250px] sm:min-w-[300px] md:min-w-[350px]  md:p-4 p-2 rounded-lg cursor-pointer"
           >
