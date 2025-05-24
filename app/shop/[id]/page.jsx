@@ -45,7 +45,13 @@ export async function generateMetadata({ params }) {
           alt: product?.title,
         },
       ],
-    }
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: product?.title || 'Product',
+      description: descriptionSnippet,
+      images: [imageUrl],
+    },
   };
 }
 

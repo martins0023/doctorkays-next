@@ -14,7 +14,7 @@ export const navItems = [
   { label: "About Us", href: "https://www.doctorkays.com/about", iconMapping: <Info className="w-5 h-5 inline mr-2" /> },
   { label: "Community Forums", href: "https://www.doctorkays.com/community", iconMapping: <Users className="w-5 h-5 inline mr-2" /> },
   { label: "Blog", href: "/blog", iconMapping: <Edit3 className="w-5 h-5 inline mr-2" /> },
-  { label: "Shop", href: "/shop", iconMapping: <ShoppingCart className="w-5 h-5 inline mr-2" /> },
+  { label: "Shop", href: "https://shop.doctorkays.com", iconMapping: <ShoppingCart className="w-5 h-5 inline mr-2" /> },
   { label: "Contact", href: "https://www.doctorkays.com/contact", iconMapping: <Phone className="w-5 h-5 inline mr-2" /> },
   { label: "FAQs", href: "https://www.doctorkays.com/faqs", iconMapping: <HelpCircle className="w-5 h-5 inline mr-2" /> },
 ];
@@ -294,7 +294,7 @@ export const resourcesLinks = [
 
 export const platformLinks = [
   { href: "https://www.doctorkays.com/consultation", text: "Consultation" },
-  { href: "https://www.doctorkays.com/shop", text: "Shops and Merch" },
+  { href: "https://shop.doctorkays.com", text: "Shops and Merch" },
 ];
 
 export const communityLinks = [
