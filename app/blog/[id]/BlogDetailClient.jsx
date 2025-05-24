@@ -1,10 +1,8 @@
 "use client"
-// File: src/pages/BlogDetail.jsx
+
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
-import Navbar from '../../../components/Navbar';
 import Stayintouch from '../../../components/Stayintouch';
-import Footer from '../../../components/Footer';
 import Testimonials from '../../../components/Testimonials';
 import { client } from '../../../lib/client';
 import ListenButton from '../components/ListenButton';
@@ -93,7 +91,13 @@ const BlogDetail = () => {
   const [recommendedArticles, setRecommendedArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isSpeaking, setIsSpeaking] = useState(false);
-  const synth = window.speechSynthesis;
+  const [synth, setSynth] = useState(null); // ✅ useState to hold speech synthesis instance
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.speechSynthesis) {
+      setSynth(window.speechSynthesis);
+    }
+  }, []);
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -352,8 +356,6 @@ const BlogDetail = () => {
 
   if (loading) return <Spinner />;
   if (!post) return <NotFound />;
-
-  const descriptionText = post.description[0]?.children[0]?.text || '';
 
   return (
     <>
