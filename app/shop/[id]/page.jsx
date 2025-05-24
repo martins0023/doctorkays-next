@@ -4,6 +4,9 @@ import FooterFull from '../../../components/FooterFull';
 import ProductDetail from '../components/ProductDetail';
 import { client } from '../../../lib/client';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 // Generate metadata for SEO per product
 export async function generateMetadata({ params }) {
   const { id } = params;

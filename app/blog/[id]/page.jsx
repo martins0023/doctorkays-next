@@ -5,6 +5,9 @@ import { client } from "../../../lib/client";
 import BlogDetailClient from "./BlogDetailClient";
 import FooterFull from "../../../components/FooterFull";
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export async function generateMetadata({ params }) {
   const slug = params.id;
   const query = `*[_type == "blog" && slug.current == $slug][0]{
