@@ -1,6 +1,8 @@
 // app/layout.jsx
 import "../styles/globals.css";
 
+export const metadataBase = new URL(process.env.NEXT_PUBLIC_SITE_URL);
+
 // Default metadata for SEO and social sharing
 export const metadata = {
   title: {
@@ -14,7 +16,7 @@ export const metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://doctorkays.com",
+    url: "https://blog.doctorkays.com",
     siteName: "Doctor Kays",
     images: [
       {
