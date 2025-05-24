@@ -10,13 +10,13 @@ import user6 from "../public/assets/profile-pictures/user6.jpg";
 import SatisfiedClients from "../components/SatisfiedClients";
 
 export const navItems = [
-  { label: "Home", href: "/", iconMapping: <Home className="w-5 h-5 inline mr-2" /> },
-  { label: "About Us", href: "/about", iconMapping: <Info className="w-5 h-5 inline mr-2" /> },
-  { label: "Community Forums", href: "/community", iconMapping: <Users className="w-5 h-5 inline mr-2" /> },
+  { label: "Home", href: "https://www.doctorkays.com", iconMapping: <Home className="w-5 h-5 inline mr-2" /> },
+  { label: "About Us", href: "https://www.doctorkays.com/about", iconMapping: <Info className="w-5 h-5 inline mr-2" /> },
+  { label: "Community Forums", href: "https://www.doctorkays.com/community", iconMapping: <Users className="w-5 h-5 inline mr-2" /> },
   { label: "Blog", href: "/blog", iconMapping: <Edit3 className="w-5 h-5 inline mr-2" /> },
   { label: "Shop", href: "/shop", iconMapping: <ShoppingCart className="w-5 h-5 inline mr-2" /> },
-  { label: "Contact", href: "/contact", iconMapping: <Phone className="w-5 h-5 inline mr-2" /> },
-  { label: "FAQs", href: "/faqs", iconMapping: <HelpCircle className="w-5 h-5 inline mr-2" /> },
+  { label: "Contact", href: "https://www.doctorkays.com/contact", iconMapping: <Phone className="w-5 h-5 inline mr-2" /> },
+  { label: "FAQs", href: "https://www.doctorkays.com/faqs", iconMapping: <HelpCircle className="w-5 h-5 inline mr-2" /> },
 ];
 
 
@@ -286,21 +286,21 @@ export const pricingOptions = [
 
 export const resourcesLinks = [
   { href: "/blog", text: "Blog" },
-  { href: "/faqs", text: "FAQs" },
+  { href: "https://www.doctorkays.com/faqs", text: "FAQs" },
   { href: "https://www.youtube.com/@Doctorkays", text: "MOS" },
   { href: "https://www.youtube.com/@Doctorkays", text: "Clinic Series" },
-  { href: "/community", text: "Community Forums" },
+  { href: "https://www.doctorkays.com/community", text: "Community Forums" },
 ];
 
 export const platformLinks = [
-  { href: "/consultation", text: "Consultation" },
-  { href: "/shop", text: "Shops and Merch" },
+  { href: "https://www.doctorkays.com/consultation", text: "Consultation" },
+  { href: "https://www.doctorkays.com/shop", text: "Shops and Merch" },
 ];
 
 export const communityLinks = [
-  { href: "/about", text: "About us" },
-  { href: "/contact", text: "Contact Us" },
-  { href: "/partnership", text: "Become a Sponsor/Collaborate" },
-  { href: "/projects", text: "Projects" },
-  { href: "/volunteer", text: "Become a volunteer" },
+  { href: "https://www.doctorkays.com/about", text: "About us" },
+  { href: "https://www.doctorkays.com/contact", text: "Contact Us" },
+  { href: "https://www.doctorkays.com/partnership", text: "Become a Sponsor/Collaborate" },
+  { href: "https://www.doctorkays.com/projects", text: "Projects" },
+  { href: "https://www.doctorkays.com/volunteer", text: "Become a volunteer" },
 ];
