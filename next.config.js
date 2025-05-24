@@ -2,7 +2,7 @@
 const nextConfig = {
   images: {
     domains: [
-      'cdn.sanity.io',       // allow Sanity’s hosted assets
+      'cdn.sanity.io',  'blog.doctorkays.com'     // allow Sanity’s hosted assets
       // any other external domains…
     ],
     remotePatterns: [

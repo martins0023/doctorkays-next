@@ -7,7 +7,7 @@ import { client } from '../../../lib/client';
 // Generate metadata for SEO per product
 export async function generateMetadata({ params }) {
   const { id } = params;
-  const query = `*[_type == "shop" && _id == $id][0]{title, description}`;
+  const query = `*[_type == "shop" && _id == $id][0]{title, description, icon[]{ asset-> { url } }}`;
   const product = await client.fetch(query, { id });
 
   // Flatten description to plain text snippet
@@ -20,6 +20,11 @@ export async function generateMetadata({ params }) {
   const descriptionSnippet = rawText.length > 160
     ? rawText.slice(0, 160) + '…'
     : rawText;
+  
+  // Build absolute OG image URL
+  const imageUrl = product.icon?.[0]?.asset.url
+    ? new URL(product.icon[0].asset.url, process.env.NEXT_PUBLIC_SITE_URL).toString()
+    : `${process.env.NEXT_PUBLIC_SITE_URL}/default-og-image.png`;
 
   return {
     title: product?.title || 'Product',
@@ -27,9 +32,11 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: product?.title,
       description: descriptionSnippet,
+      url: `${process.env.NEXT_PUBLIC_SITE_URL}/products/${id}`,
+      siteName: 'Doctor Kays',
       images: [
         {
-          url: product.icon?.[0]?.asset.url,
+          url: imageUrl,
           width: 1200,
           height: 630,
           alt: product?.title,
