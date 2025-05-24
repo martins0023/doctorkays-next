@@ -6,14 +6,16 @@ import BlogDetailClient from "./BlogDetailClient";
 import FooterFull from "../../../components/FooterFull";
 
 export async function generateMetadata({ params }) {
-  const post = await client.fetch(
-    `*[_type=="blog" && slug.current==$slug][0]{
-       title, description, "imageUrl": image[0].asset->url
-    }`,
-    { slug: params.id }
-  );
+  const slug = params.id;
+  const query = `*[_type == "blog" && slug.current == $slug][0]{
+    title,
+    description,
+    "imageUrl": image[0].asset->url
+  }`;
+  const post = await client.fetch(query, { slug });
+
   if (!post) {
-    return { title: "Post Not Found" };
+    return { title: 'Post Not Found' };
   }
 
   // Extract plain text snippet from portable text
@@ -34,6 +36,7 @@ export async function generateMetadata({ params }) {
   const imageUrl = post.imageUrl
     ? new URL(post.imageUrl, process.env.NEXT_PUBLIC_SITE_URL).toString()
     : `${process.env.NEXT_PUBLIC_SITE_URL}/default-og-image.png`;
+
   return {
     title: post.title,
     description: descriptionSnippet,
@@ -54,17 +57,14 @@ export async function generateMetadata({ params }) {
   };
 }
 
+/**
+ * Server component to render blog detail client
+ */
 export default async function BlogDetailPage({ params }) {
-  // const { id } = useParams();
-  // const [post, setPost] = useState(null);
-
-  // if (loading) return <Spinner />;
-  // if (!post) return <NotFound />;
-
   return (
     <>
       <Navbar />
-      <BlogDetailClient />
+      <BlogDetailClient slug={params.id} />
       <FooterFull />
     </>
   );
