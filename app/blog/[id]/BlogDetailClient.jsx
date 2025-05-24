@@ -381,8 +381,6 @@ const BlogDetail = () => {
         <Testimonials />
         <Stayintouch />
       </div>
-      {/* <Footer />
-      <footer className="bg-primary text-white p-4 text-center">© 2025 Doctor Kays</footer> */}
     </>
   );
 };

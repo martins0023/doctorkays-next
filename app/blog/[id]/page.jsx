@@ -5,7 +5,7 @@ import { client } from "../../../lib/client";
 import BlogDetailClient from "./BlogDetailClient";
 import FooterFull from "../../../components/FooterFull";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
 export async function generateMetadata({ params }) {
@@ -18,22 +18,21 @@ export async function generateMetadata({ params }) {
   const post = await client.fetch(query, { slug });
 
   if (!post) {
-    return { title: 'Post Not Found' };
+    return { title: "Post Not Found" };
   }
 
   // Extract plain text snippet from portable text
   const rawText = Array.isArray(post.description)
     ? post.description
-        .map(block =>
+        .map((block) =>
           Array.isArray(block.children)
-            ? block.children.map(child => child.text).join('')
-            : ''
+            ? block.children.map((child) => child.text).join("")
+            : ""
         )
-        .join(' ')
-    : '';
-  const descriptionSnippet = rawText.length > 160
-    ? rawText.slice(0, 160) + '…'
-    : rawText;
+        .join(" ")
+    : "";
+  const descriptionSnippet =
+    rawText.length > 160 ? rawText.slice(0, 160) + "…" : rawText;
 
   // Build absolute image URL
   const imageUrl = post.imageUrl
@@ -47,7 +46,7 @@ export async function generateMetadata({ params }) {
       title: post.title,
       description: descriptionSnippet,
       url: `${process.env.NEXT_PUBLIC_SITE_URL}/blog/${slug}`,
-      siteName: 'Doctor Kays',
+      siteName: "Doctor Kays",
       images: [
         {
           url: imageUrl,
@@ -58,7 +57,7 @@ export async function generateMetadata({ params }) {
       ],
     },
     twitter: {
-      card: 'summary_large_image',
+      card: "summary_large_image",
       title: post.title,
       description: descriptionSnippet,
       images: [imageUrl],
