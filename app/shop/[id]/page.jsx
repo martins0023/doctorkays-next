@@ -32,7 +32,7 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: product?.title,
       description: descriptionSnippet,
-      url: `${process.env.NEXT_PUBLIC_SITE_URL}/products/${id}`,
+      url: `${process.env.NEXT_PUBLIC_SITE_URL}/${id}`,
       siteName: 'Doctor Kays',
       images: [
         {
