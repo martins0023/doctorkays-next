@@ -64,9 +64,9 @@ const BlogPosts = () => {
     <div className="py-10">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-3xl font-bold">Blog Sections</h2>
-        <a href="/all-posts" className="text-primary font-semibold">
+        {/* <a href="/all-posts" className="text-primary font-semibold">
           View All Posts
-        </a>
+        </a> */}
       </div>
       <p className="mb-8 text-neutral-400">
         Dive into the latest insights, tips, and updates from Doctor Kays. Our

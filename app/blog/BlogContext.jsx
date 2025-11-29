@@ -14,7 +14,7 @@ const BlogContext = () => {
       initial="hidden"
       animate="visible"
       variants={staggerContainer}
-      className="max-w-7xl mx-auto md:pt-20 px-6"
+      className="max-w-7xl mx-auto md:pt-20 px-6 mt-10"
     >
       <div className="text-center mt-10">
         <motion.span
