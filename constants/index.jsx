@@ -1,61 +1,181 @@
-import { ActivityIcon, Edit3, HeartPulse, HelpCircle, Home, Info, Locate, LocateFixedIcon, MessageCircleQuestion, Notebook, NotebookPen, Phone, Pill, Podcast, Ribbon, ShieldPlus, ShoppingCart, Syringe, TableIcon, Target, Telescope, Users, Waypoints } from "lucide-react";
+import { ActivityIcon, BotMessageSquare, Briefcase, Edit3, HeartPulse, HelpCircle, Home, Info, Locate, LocateFixedIcon, MessageCircleQuestion, Notebook, NotebookPen, Phone, Pill, Podcast, Ribbon, ShieldPlus, ShoppingCart, Syringe, TableIcon, Target, Telescope, User2Icon, Users, Waypoints } from "lucide-react";
 
 
-import user1 from "../public/assets/profile-pictures/user1.jpg";
-import user2 from "../public/assets/profile-pictures/user2.jpg";
-import user3 from "../public/assets/profile-pictures/user3.jpg";
-import user4 from "../public/assets/profile-pictures/user4.jpg";
-import user5 from "../public/assets/profile-pictures/user5.jpg";
-import user6 from "../public/assets/profile-pictures/user6.jpg";
+import user1 from "../assets/profile-pictures/user1.jpg";
+import user2 from "../assets/profile-pictures/user2.jpg";
+import user3 from "../assets/profile-pictures/user3.jpg";
+import user4 from "../assets/profile-pictures/user4.jpg";
+import user5 from "../assets/profile-pictures/user5.jpg";
+import user6 from "../assets/profile-pictures/user6.jpg";
 import SatisfiedClients from "../components/SatisfiedClients";
+import { clinic1, clinic3, clinicseries1, clinicseries2, clinicseries3, clinicseries4, doc1 } from "../assets";
 
 export const navItems = [
-  { label: "Home", href: "https://www.doctorkays.com", iconMapping: <Home className="w-5 h-5 inline mr-2" /> },
-  { label: "About Us", href: "https://www.doctorkays.com/about", iconMapping: <Info className="w-5 h-5 inline mr-2" /> },
-  { label: "Community Forums", href: "https://www.doctorkays.com/community", iconMapping: <Users className="w-5 h-5 inline mr-2" /> },
-  { label: "Blog", href: "/blog", iconMapping: <Edit3 className="w-5 h-5 inline mr-2" /> },
-  { label: "Shop", href: "https://shop.doctorkays.com", iconMapping: <ShoppingCart className="w-5 h-5 inline mr-2" /> },
-  { label: "Contact", href: "https://www.doctorkays.com/contact", iconMapping: <Phone className="w-5 h-5 inline mr-2" /> },
-  { label: "FAQs", href: "https://www.doctorkays.com/faqs", iconMapping: <HelpCircle className="w-5 h-5 inline mr-2" /> },
+  { label: "Home", href: "/", iconMapping: <Home className="w-5 h-5 inline mr-2" /> },
+  { label: "About Us", href: "/about", iconMapping: <Info className="w-5 h-5 inline mr-2" /> },
+  // { label: "Community Forums", href: "/community", iconMapping: <Users className="w-5 h-5 inline mr-2" /> },
+  { label: "Blog", href: "https://blog.doctorkays.com/", iconMapping: <Edit3 className="w-5 h-5 inline mr-2" /> },
+  // { label: "Shop", href: "/shop", iconMapping: <ShoppingCart className="w-5 h-5 inline mr-2" /> },
+  { label: "Contact", href: "/contact", iconMapping: <Phone className="w-5 h-5 inline mr-2" /> },
+  { label: "FAQs", href: "/faqs", iconMapping: <HelpCircle className="w-5 h-5 inline mr-2" /> },
 ];
 
+export const clinicSeries = [
+  {
+    id: 1,
+    category: "HPV",
+    title: "Foul Smells During Sex",
+    description:
+      "Do you know there's an enemy known as HPV that causes cancer of the throat, cervix, anus and penis? People don't really know about this. You need to watch this video.",
+    author: "Doctor Kays",
+    readTime: "2min",
+    date: "1st of January, 2024",
+    videoId: "p2eG7OM_0_Y",
+    imageUrl: clinicseries3, // Replace with actual image paths
+  },
+  {
+    id: 2,
+    category: "Human Papilloma Virus",
+    title: "How is HPV Transmitted",
+    description:
+    "Last week, we talked about the mysterious enemy called Human Papolloma Virus. A virus that causes cancer of the cervix, penis, throat and anus.",
+    author: "Doctor Kays",
+    readTime: "3min",
+    date: "2nd of January, 2024",
+    videoId: "p2eG7OM_0_Y",
+    imageUrl: clinicseries4, // Replace with actual image paths
+  },
+  {
+    id: 3,
+    category: "HPV",
+    title: "The Mysterious Enemy - HPV",
+    description:
+    "It will be impossible for me to talk about cervical cancer without raising awareness about the mysterious enemy - Human Papilloma Virus",
+    author: "Doctor Kays",
+    readTime: "1min",
+    date: "3rd of January, 2024",
+    videoId: "p2eG7OM_0_Y",
+    imageUrl: clinicseries1, // Replace with actual image paths
+  },
+];
+
+export const mosSeries = [
+  {
+    id: 1,
+    category: "Cervical Cancer",
+    title: "Dsiccovering Cervical Cancer",
+    description:
+      "if you notice anyone with cervical cancer, would you allow the person to be treated in Nigeria? Listen to what Nigerians are saying on Medicine on the street with Dr Kays",
+    author: "Doctor Kays",
+    readTime: "1min watch",
+    date: "1st of January, 2024",
+    videoId: "p2eG7OM_0_Y",
+    imageUrl: clinicseries3, // Replace with actual image paths
+  },
+  {
+    id: 2,
+    category: "HIV",
+    title: "How is HIV Transmitted",
+    description:
+    "Do you know that you can be HIV positive and still build a family? Testing, Regular Clinic visits and Drug compliance are all you NEED!",
+    author: "Doctor Kays",
+    readTime: "3min watch",
+    date: "2nd of January, 2024",
+    videoId: "p2eG7OM_0_Y",
+    imageUrl: clinicseries2, // Replace with actual image paths
+  },
+  {
+    id: 3,
+    category: "Cervical Cancer",
+    title: "Nigeria Healthcare and Cervical Cancer",
+    description:
+    "Do you believe in the Nigeria Healthcare system? Listen to what the street has to say on Medicine on the street with Doctor Kays concerning cervical cancer.",
+    author: "Doctor Kays",
+    readTime: "1min watch",
+    date: "3rd of January, 2024",
+    videoId: "p2eG7OM_0_Y",
+    imageUrl: clinicseries1, // Replace with actual image paths
+  },
+];
+
+export const Blogposts = [
+  {
+    id: 1,
+    category: "postrate cancer",
+    title: "Dealing with Postrate Cancer",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
+    author: "Doctor Kays",
+    readTime: "5min read",
+    date: "1st of January, 2024",
+    imageUrl: clinic1, // Replace with actual image paths
+  },
+  {
+    id: 2,
+    category: "Diarrhea",
+    title: "How to deal with Diarrhea",
+    description:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
+    author: "Doctor Kays",
+    readTime: "5min read",
+    date: "2nd of January, 2024",
+    imageUrl: clinic3, // Replace with actual image paths
+  },
+  {
+    id: 3,
+    category: "Liver Cancer",
+    title: "Surviving Liver Cancer",
+    description:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
+    author: "Doctor Kays",
+    readTime: "5min read",
+    date: "3rd of January, 2024",
+    imageUrl: doc1, // Replace with actual image paths
+  },
+];
 
 export const testimonials = [
   {
     user: "MLS Abimbola",
-    company: "United Kingdom",
-    image: user1,
+    country: "United Kingdom",
+    image: User2Icon,
     text: "Service is very satisfying.",
+    rating: 5,
   },
   {
     user: "Philadolar",
-    company: "Nigeria",
-    image: user2,
+    country: "Nigeria",
+    image: User2Icon,
     text: "Your product or content has been really educative and also fun to watch. Keep it up",
+    rating: 5,
   },
   {
     user: "Oluitan Olumide",
-    company: "Nigeria",
-    image: user3,
+    country: "Nigeria",
+    image: User2Icon,
     text: "Doctor kays has been an amazing Doctor since I got to know him.",
+    rating: 5,
   },
   {
     user: "Jeremiah Robert",
-    company: "Nigeria",
-    image: user4,
+    country: "Nigeria",
+    image: User2Icon,
     text: "Dr Kays is now a household name in social media space. The people on my space are loving it, to the extent of asking: this Doctor kay's you are always posting is doing very good with the health education. Those tips and reminders are very helpul.",
+    rating: 5,
   },
   {
     user: "Commy-Constance Oko",
-    company: "Nigeria",
-    image: user5,
+    country: "Nigeria",
+    image: User2Icon,
     text: "I have learnt so much about personal health and got to know a lot on health matters generally. Thank you so much Dr. Kays for always giving prompt response to my questions.",
+    rating: 5,
   },
   {
     user: "Ezekiel",
-    company: "London",
-    image: user6,
+    country: "London",
+    image: User2Icon,
     text: "Great team and the app is easy to use.",
+    rating: 5,
   },
 ];
 
@@ -206,24 +326,24 @@ export const checklistItems = [
 ];
 
 export const checkaboutlists = [
-  {
-    icon: <Ribbon />,
-    title: "Medicine on the street",
-    description:
-      "Follow closely as doctor kays takes you to the streets of Nigeria.",
-  },
-  {
-    icon: <HeartPulse />,
-    title: "Clinic Series",
-    description:
-      "Doctor kays powerful vision: To keep everyone updated on self-preventive medical measures.",
-  },
-  {
-    icon: <ShieldPlus />,
-    title: "Health Nuggets",
-    description:
-      "Astonishing quotes and designs that engages people on how to get along with their health.",
-  },
+  // {
+  //   icon: <Ribbon />,
+  //   title: "Medicine on the street",
+  //   description:
+  //     "Follow closely as doctor kays takes you to the streets of Nigeria.",
+  // },
+  // {
+  //   icon: <HeartPulse />,
+  //   title: "Clinic Series",
+  //   description:
+  //     "Doctor kays powerful vision: To keep everyone updated on self-preventive medical measures.",
+  // },
+  // {
+  //   icon: <ShieldPlus />,
+  //   title: "Health Nuggets",
+  //   description:
+  //     "Astonishing quotes and designs that engages people on how to get along with their health.",
+  // },
   {
     icon: <NotebookPen />,
     title: "Appointment Booking",
@@ -285,22 +405,23 @@ export const pricingOptions = [
 ];
 
 export const resourcesLinks = [
-  { href: "/blog", text: "Blog" },
-  { href: "https://www.doctorkays.com/faqs", text: "FAQs" },
-  { href: "https://www.youtube.com/@Doctorkays", text: "MOS" },
-  { href: "https://www.youtube.com/@Doctorkays", text: "Clinic Series" },
-  { href: "https://www.doctorkays.com/community", text: "Community Forums" },
+  // { href: "https://blog.doctorkays.com/", text: "Blog" },
+  { href: "/faqs", text: "FAQs" },
+  // { href: "https://www.youtube.com/@Doctorkays", text: "MOS" },
+  // { href: "https://www.youtube.com/@Doctorkays", text: "Clinic Series" },
+  // { href: "/community", text: "Community Forums" },
 ];
 
 export const platformLinks = [
-  { href: "https://www.doctorkays.com/consultation", text: "Consultation" },
-  { href: "https://shop.doctorkays.com", text: "Shops and Merch" },
+  { href: "https://consultation.doctorkays.com/", text: "Consultation" },
+  // { href: "/shops", text: "Shops and Merch" },
+  // { href: "#", text: "Clinic Online (coming soon)" },
 ];
 
 export const communityLinks = [
-  { href: "https://www.doctorkays.com/about", text: "About us" },
-  { href: "https://www.doctorkays.com/contact", text: "Contact Us" },
-  { href: "https://www.doctorkays.com/partnership", text: "Become a Sponsor/Collaborate" },
-  { href: "https://www.doctorkays.com/projects", text: "Projects" },
-  { href: "https://www.doctorkays.com/volunteer", text: "Become a volunteer" },
+  { href: "/about", text: "About us" },
+  { href: "/contact", text: "Contact Us" },
+  // { href: "/partnership", text: "Become a Sponsor/Collaborate" },
+  { href: "/projects", text: "Projects" },
+  { href: "/volunteer", text: "Become a volunteer" },
 ];

@@ -1,9 +1,10 @@
 import { resourcesLinks, platformLinks, communityLinks } from "../constants";
+import logo from "../assets/logo.png";
 const Footer = () => {
   return (
     <footer className="mt-20 border-t py-10 border-neutral-700">
       <div className="mb-10">
-        <img src="/logo.svg" alt="doctorkays" className="h-8 w-auto" />
+        <img src={logo} alt="doctorkays" className="h-8 w-auto" />
         <p className=" font-semibold text-[16px]">Doctorkays</p>
         <p className="mt-1 text-[16px] font-montserrat">
           Doctor Kays, a dedicated medical professional passionate about
@@ -53,7 +54,7 @@ const Footer = () => {
           Terms Policy
         </a>
         <span className="mx-2">•</span>
-        <span>
+        <span href="" className="">
           Designed by <a href="https://www.linkedin.com/in/miracle-oladapo/" className="text-blue-500 hover:underline">Miracle</a>
         </span>
       </div>

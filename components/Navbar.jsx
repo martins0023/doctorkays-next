@@ -1,185 +1,177 @@
-'use client'
+import { Menu, X, ArrowRight } from "lucide-react";
+import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import logo from "../assets/logo.png";
+import { navItems } from "../constants";
+import { motion, AnimatePresence } from "framer-motion";
 
-import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import {
-  Menu,
-  X,
-  Sun,
-  Moon,
-} from 'lucide-react'
-import logo from '../public/assets/logo.png'
-import { navItems } from '../constants'
-import {
-  fadeIn,
-  pulse,
-  slideInFromTop,
-} from '../constants/animations'
+const Navbar = () => {
+  const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
-export default function Navbar() {
-  const [mobileOpen, setMobileOpen] = useState(false)
-  const [isDarkMode, setIsDarkMode] = useState(false)
-  const [mounted, setMounted] = useState(false)
-
-  const router = useRouter()
-  const pathname = usePathname()
-
-  // On client mount, read theme preference
+  // Handle Scroll Effect for Navbar styling
   useEffect(() => {
-    setMounted(true)
-    const stored = localStorage.getItem('isDarkMode') === 'true'
-    setIsDarkMode(stored)
-  }, [])
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-  // Persist and apply theme
-  useEffect(() => {
-    if (!mounted) return
-    const root = document.documentElement
-    if (isDarkMode) {
-      root.classList.add('dark')
-      root.classList.remove('light')
-    } else {
-      root.classList.add('light')
-      root.classList.remove('dark')
-    }
-    localStorage.setItem('isDarkMode', isDarkMode)
-  }, [isDarkMode, mounted])
+  const toggleNavbar = () => {
+    setMobileDrawerOpen(!mobileDrawerOpen);
+  };
 
-  const toggleDarkMode = () => setIsDarkMode(p => !p)
-  const toggleMobile = () => setMobileOpen(p => !p)
+  const handleHome = () => {
+    navigate("/");
+    setMobileDrawerOpen(false);
+  };
+
+  // Animation Variants
+  const menuVars = {
+    initial: { scaleY: 0 },
+    animate: {
+      scaleY: 1,
+      transition: { duration: 0.5, ease: [0.12, 0, 0.39, 0] },
+    },
+    exit: {
+      scaleY: 0,
+      transition: { delay: 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+    },
+  };
+
+  const linkVars = {
+    initial: {
+      y: "30vh",
+      transition: { duration: 0.5, ease: [0.37, 0, 0.63, 1] },
+    },
+    open: { y: 0, transition: { duration: 0.7, ease: [0, 0.55, 0.45, 1] } },
+  };
 
   return (
-    <motion.nav
-      initial="hidden"
-      animate="visible"
-      variants={fadeIn}
-      className="sticky top-0 z-50 py-3 backdrop-blur-lg border-b border-purple-700/80"
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "py-3 bg-white/80 backdrop-blur-md shadow-sm border-b border-gray-100"
+          : "py-5 bg-transparent"
+      }`}
     >
-      <div className="container px-4 mx-auto relative lg:text-sm">
+      <div className="container px-4 mx-auto relative lg:text-sm max-w-7xl">
         <div className="flex justify-between items-center">
-          {/* Logo */}
+          {/* Logo Section */}
           <div
-            onClick={() => router.push('/')}
-            className="flex items-center flex-shrink-0 cursor-pointer"
+            onClick={handleHome}
+            className="flex items-center flex-shrink-0 cursor-pointer group"
           >
-            <img src={logo.src} alt="Logo" className="h-8 w-auto mr-2" />
-            <span className="text-[16px] tracking-tight">DoctorKays</span>
+            <img
+              className="h-10 w-auto mr-2 transition-transform duration-300 group-hover:scale-105"
+              src={logo}
+              alt="DoctorKays Logo"
+            />
           </div>
 
-          {/* Desktop links */}
-          <ul className="hidden lg:flex ml-14 space-x-12">
-            {navItems.map(item => (
-              <li key={item.href}>
-                <Link
+          {/* Desktop Navigation */}
+          <ul className="hidden lg:flex items-center space-x-2 bg-gray-50/50 p-1.5 rounded-full border border-gray-100/50 backdrop-blur-sm">
+            {navItems.map((item, index) => (
+              <li key={index}>
+                <a
                   href={item.href}
-                  className={`pb-1 ${
-                    pathname === item.href
-                      ? 'border-b-2 border-primary text-primary'
-                      : 'text-gray-300 hover:text-primary'
+                  className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 block ${
+                    location.pathname === item.href
+                      ? "bg-white text-primary shadow-sm"
+                      : "text-gray-600 hover:text-primary hover:bg-gray-100/80"
                   }`}
                 >
                   {item.label}
-                </Link>
+                </a>
               </li>
             ))}
           </ul>
 
-          {/* Dark toggle (desktop) */}
+          {/* Desktop CTA Button */}
           <div className="hidden lg:flex items-center space-x-4">
-            {mounted && (
-              <button onClick={toggleDarkMode}>
-                {isDarkMode ? (
-                  <Moon size={24} className="text-gray-300 hover:text-primary" />
-                ) : (
-                  <Sun size={24} className="text-gray-300 hover:text-primary" />
-                )}
-              </button>
-            )}
+            <a
+              href="https://consultation.doctorkays.com/"
+              className="group relative inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-white transition-all duration-200 bg-primarydark rounded-full hover:bg-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+            >
+              <span>Book Consultation</span>
+              <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+            </a>
           </div>
 
-          {/* Book Consultation (desktop) */}
-          <motion.div
-            variants={pulse}
-            initial="hidden"
-            animate="visible"
-            className="hidden lg:flex items-center justify-center space-x-12"
-          >
-            <Link
-              href="/consultation"
-              className="bg-gradient-to-r from-purple-500 to-purple-950 text-white py-2 px-3 rounded-full"
+          {/* Mobile Menu Toggle */}
+          <div className="lg:hidden flex items-center z-50">
+            <button
+              onClick={toggleNavbar}
+              className="p-2 text-gray-800 focus:outline-none bg-gray-100 rounded-full hover:bg-gray-200 transition-colors"
             >
-              Book a Consultation
-            </Link>
-          </motion.div>
-
-          {/* Mobile menu button */}
-          <div className="lg:hidden md:flex flex-col justify-end">
-            <button onClick={toggleMobile}>
-              {mobileOpen ? <X /> : <Menu />}
+              {mobileDrawerOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
+      </div>
 
-        {/* Mobile drawer */}
-        {mobileOpen && (
+      {/* Mobile Full Screen Menu */}
+      <AnimatePresence>
+        {mobileDrawerOpen && (
           <motion.div
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-            variants={slideInFromTop}
-            className="fixed right-0 z-20 bg-neutral-900 w-full p-12 flex flex-col justify-center items-center lg:hidden"
+            variants={menuVars}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            className="fixed inset-0 w-full h-screen bg-white z-40 origin-top flex flex-col items-center justify-center"
           >
-            <ul>
-              {navItems.map(item => (
-                <motion.li
-                  key={item.href}
-                  className="py-4"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Link
-                    href={item.href}
-                    className={`pb-1 flex w-fit gap-1 ${
-                      pathname === item.href
-                        ? 'border-b-2 border-primary text-primary'
-                        : 'text-gray-300 hover:text-primary'
-                    }`}
-                    onClick={() => setMobileOpen(false)}
+            <div className="w-full h-full flex flex-col items-center justify-center gap-8">
+              {navItems.map((item, index) => (
+                <div key={index} className="overflow-hidden">
+                  <motion.div
+                    variants={linkVars}
+                    initial="initial"
+                    animate="open"
                   >
-                    <div>{item.iconMapping}</div> <div>{item.label}</div>
-                  </Link>
-                </motion.li>
+                    <a
+                      href={item.href}
+                      onClick={() => setMobileDrawerOpen(false)}
+                      className={`text-3xl font-bold tracking-tight font-grotesque ${
+                        location.pathname === item.href
+                          ? "text-primary"
+                          : "text-gray-900"
+                      }`}
+                    >
+                      {item.label}
+                    </a>
+                  </motion.div>
+                </div>
               ))}
-            </ul>
 
-            {/* Dark toggle (mobile) */}
-            {mounted && (
-              <div className="flex space-x-4 mt-6 mb-5">
-                <button onClick={toggleDarkMode}>
-                  {isDarkMode ? (
-                    <Moon size={24} className="text-gray-300 hover:text-primary" />
-                  ) : (
-                    <Sun size={24} className="text-gray-300 hover:text-primary" />
-                  )}
-                </button>
+              <div className="mt-8">
+                <motion.div
+                  variants={linkVars}
+                  initial="initial"
+                  animate="open"
+                >
+                  <a
+                    href="https://consultation.doctorkays.com/"
+                    className="group relative ease-in-out
+                  shadow-[0_6px_0_0] shadow-primarydark
+                  hover:translate-y-1
+                  hover:shadow-[0_2px_0_0] hover:shadow-primarydark
+                  active:translate-y-1.5
+                  active:shadow-none
+                                    inline-flex items-center justify-center px-8 py-5 text-lg font-bold text-white transition-all duration-200 bg-primary rounded-full hover:bg-blue-700"
+                  >
+                    Book a Consultation
+                  </a>
+                </motion.div>
               </div>
-            )}
-
-            {/* Book Consultation (mobile) */}
-            <div className="mt-2">
-              <Link
-                href="/consultation"
-                className="rounded-full py-2 px-3 bg-gradient-to-r from-purple-500 to-purple-950 text-white"
-                onClick={() => setMobileOpen(false)}
-              >
-                Book a Consultation
-              </Link>
             </div>
           </motion.div>
         )}
-      </div>
-    </motion.nav>
-  )
-}
+      </AnimatePresence>
+    </nav>
+  );
+};
+
+export default Navbar;
