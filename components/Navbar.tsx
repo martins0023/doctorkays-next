@@ -1,15 +1,25 @@
+"use client";
+
 import { Menu, X, ArrowRight } from "lucide-react";
 import { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
-import logo from "../assets/logo.png";
+import { useRouter, usePathname } from "next/navigation"; // Changed from react-router-dom
 import { navItems } from "../constants";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
+import Link from "next/link"; // Optional: Use for internal navigation
+
+// Define the shape of your navigation items for type safety
+interface NavItem {
+  label: string;
+  href: string;
+}
 
 const Navbar = () => {
-  const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const navigate = useNavigate();
-  const location = useLocation();
+  const [mobileDrawerOpen, setMobileDrawerOpen] = useState<boolean>(false);
+  const [scrolled, setScrolled] = useState<boolean>(false);
+
+  // Next.js Routing Hooks
+  const router = useRouter();
+  const pathname = usePathname();
 
   // Handle Scroll Effect for Navbar styling
   useEffect(() => {
@@ -25,12 +35,12 @@ const Navbar = () => {
   };
 
   const handleHome = () => {
-    navigate("/");
+    router.push("/"); // Changed to router.push
     setMobileDrawerOpen(false);
   };
 
   // Animation Variants
-  const menuVars = {
+  const menuVars: Variants = {
     initial: { scaleY: 0 },
     animate: {
       scaleY: 1,
@@ -42,7 +52,7 @@ const Navbar = () => {
     },
   };
 
-  const linkVars = {
+  const linkVars: Variants = {
     initial: {
       y: "30vh",
       transition: { duration: 0.5, ease: [0.37, 0, 0.63, 1] },
@@ -61,25 +71,26 @@ const Navbar = () => {
       <div className="container px-4 mx-auto relative lg:text-sm max-w-7xl">
         <div className="flex justify-between items-center">
           {/* Logo Section */}
-          <div
-            onClick={handleHome}
-            className="flex items-center flex-shrink-0 cursor-pointer group"
+          <a
+            href="https://doctorkays.com/"
+            className="flex items-center shrink-0 cursor-pointer group"
           >
+            {/* Note: In Next.js, consider using <Image /> for optimization if width/height are known */}
             <img
               className="h-10 w-auto mr-2 transition-transform duration-300 group-hover:scale-105"
-              src={logo}
+              src="/logo.png"
               alt="DoctorKays Logo"
             />
-          </div>
+          </a>
 
           {/* Desktop Navigation */}
           <ul className="hidden lg:flex items-center space-x-2 bg-gray-50/50 p-1.5 rounded-full border border-gray-100/50 backdrop-blur-sm">
-            {navItems.map((item, index) => (
+            {navItems.map((item: NavItem, index: number) => (
               <li key={index}>
                 <a
                   href={item.href}
                   className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 block ${
-                    location.pathname === item.href
+                    pathname === item.href
                       ? "bg-white text-primary shadow-sm"
                       : "text-gray-600 hover:text-primary hover:bg-gray-100/80"
                   }`}
@@ -124,7 +135,7 @@ const Navbar = () => {
             className="fixed inset-0 w-full h-screen bg-white z-40 origin-top flex flex-col items-center justify-center"
           >
             <div className="w-full h-full flex flex-col items-center justify-center gap-8">
-              {navItems.map((item, index) => (
+              {navItems.map((item: NavItem, index: number) => (
                 <div key={index} className="overflow-hidden">
                   <motion.div
                     variants={linkVars}
@@ -135,7 +146,7 @@ const Navbar = () => {
                       href={item.href}
                       onClick={() => setMobileDrawerOpen(false)}
                       className={`text-3xl font-bold tracking-tight font-grotesque ${
-                        location.pathname === item.href
+                        pathname === item.href
                           ? "text-primary"
                           : "text-gray-900"
                       }`}
@@ -155,12 +166,12 @@ const Navbar = () => {
                   <a
                     href="https://consultation.doctorkays.com/"
                     className="group relative ease-in-out
-                  shadow-[0_6px_0_0] shadow-primarydark
-                  hover:translate-y-1
-                  hover:shadow-[0_2px_0_0] hover:shadow-primarydark
-                  active:translate-y-1.5
-                  active:shadow-none
-                                    inline-flex items-center justify-center px-8 py-5 text-lg font-bold text-white transition-all duration-200 bg-primary rounded-full hover:bg-blue-700"
+                      shadow-[0_6px_0_0] shadow-primarydark
+                      hover:translate-y-1
+                      hover:shadow-[0_2px_0_0] hover:shadow-primarydark
+                      active:translate-y-1.5
+                      active:shadow-none
+                      inline-flex items-center justify-center px-8 py-5 text-lg font-bold text-white transition-all duration-200 bg-primary rounded-full hover:bg-blue-700"
                   >
                     Book a Consultation
                   </a>
