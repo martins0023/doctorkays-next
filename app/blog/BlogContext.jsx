@@ -16,7 +16,7 @@ const BlogContext = () => {
       variants={staggerContainer}
       className="max-w-7xl mx-auto md:pt-20 px-6 mt-10"
     >
-      <div className="text-center mt-10">
+      <div className="text-center mt-20">
         <motion.span
           variants={slideInFromLeft}
           className="bg-neutral-900 text-purple-500 rounded-full h-6 text-sm font-medium px-2 py-1 uppercase"
